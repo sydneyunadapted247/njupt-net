@@ -1,0 +1,74 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          check-latest: true
+
+      - name: Run tests
+        run: go test -v ./...
+
+  build_release:
+    name: Build and Release
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          check-latest: true
+
+      - name: Build binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          targets=(
+            "windows amd64 .exe"
+            "linux amd64"
+            "linux arm64"
+            "darwin arm64"
+          )
+
+          for target in "${targets[@]}"; do
+            IFS=' ' read -r goos goarch ext <<< "$target"
+            out="dist/njupt-net-${goos}-${goarch}${ext:-}"
+            echo "Building ${goos}/${goarch} -> ${out}"
+            CGO_ENABLED=0 GOOS="${goos}" GOARCH="${goarch}" \
+              go build -trimpath -ldflags="-s -w" -o "${out}" ./cmd/njupt-net
+          done
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/njupt-net-windows-amd64.exe
+            dist/njupt-net-linux-amd64
+            dist/njupt-net-linux-arm64
+            dist/njupt-net-darwin-arm64
+          generate_release_notes: true
