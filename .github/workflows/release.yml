@@ -44,24 +44,7 @@ jobs:
 
       - name: Build binaries
         shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p dist
-
-          targets=(
-            "windows amd64 .exe"
-            "linux amd64"
-            "linux arm64"
-            "darwin arm64"
-          )
-
-          for target in "${targets[@]}"; do
-            IFS=' ' read -r goos goarch ext <<< "$target"
-            out="dist/njupt-net-${goos}-${goarch}${ext:-}"
-            echo "Building ${goos}/${goarch} -> ${out}"
-            CGO_ENABLED=0 GOOS="${goos}" GOARCH="${goarch}" \
-              go build -trimpath -ldflags="-s -w" -o "${out}" ./cmd/njupt-net
-          done
+        run: ./scripts/build.sh all
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1

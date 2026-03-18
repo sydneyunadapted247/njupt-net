@@ -64,10 +64,42 @@ The objective is to build a complete, maintainable, production-oriented Go CLI f
 
 ## Build
 
-Once implementation exists:
+Quick compile check:
 
 ```bash
 go build ./...
+```
+
+Scripted cross-build:
+
+```bash
+# Linux/macOS
+./scripts/build.sh
+
+# Full release targets (windows/amd64, linux/amd64, linux/arm64, darwin/arm64)
+./scripts/build.sh all
+```
+
+```powershell
+# Windows PowerShell
+.\scripts\build.ps1
+
+# Full release targets
+.\scripts\build.ps1 -Mode all
+```
+
+## Local smoke test
+
+Run one-click local CLI checks (reads `credentials.json`):
+
+```powershell
+.\scripts\test-local.ps1
+```
+
+Include side-effecting write operations:
+
+```powershell
+.\scripts\test-local.ps1 -IncludeWriteOps
 ```
 
 ## Notes for implementers
