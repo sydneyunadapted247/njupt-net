@@ -44,7 +44,7 @@ jobs:
 
       - name: Build binaries
         shell: bash
-        run: ./scripts/build.sh all
+        run: bash ./scripts/build.sh all
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
